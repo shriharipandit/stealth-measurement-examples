@@ -17,11 +17,14 @@ Python 3.9 or later is required; no extra packages are needed.
 python3 examples/snapshot.py ai
 python3 examples/snapshot.py business
 python3 examples/business_icmp.py
+python3 examples/super_intelligence.py
 ```
 
 The first two commands each fetch a single snapshot and report its state, timestamps and number of configured endpoints. The count is not a count of healthy services. HTTP 503 can carry an unavailable snapshot, which is reported with a nonzero exit status.
 
 The third command shows each business platform's ICMP label and latency only when sufficient fresh evidence exists. It checks timestamps against the client clock; keep that clock accurate. `None` means unavailable, not zero. This follows the [published guide](https://stealth.net/developers/measurements).
+
+The fourth command reports Super Intelligence ICMP and TCP states and current ICMP latency when fresh. Latencies are already baseline-adjusted; negative and zero values are valid. It does not report a TCP duration. Stale or insufficient evidence is labeled unconfirmed.
 
 Retrieve the snapshots directly with `curl` if preferred:
 
